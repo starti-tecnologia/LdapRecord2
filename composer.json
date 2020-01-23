@@ -1,5 +1,5 @@
 {
-    "name": "directorytree/ldaprecord",
+    "name": "starti/ldaprecord",
     "type": "library",
     "description": "ActiveRecord for LDAP.",
     "homepage": "https://www.ldaprecord.com",
