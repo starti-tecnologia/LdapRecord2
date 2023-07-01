@@ -382,7 +382,7 @@ class Builder
      *
      * @return Collection|array
      */
-    public function paginate($pageSize = 5000, $isCritical = true)
+    public function paginate($pageSize = 1000, $isCritical = true)
     {
         $this->paginated = true;
 
@@ -483,7 +483,9 @@ class Builder
             // Before running the query, we will set the LDAP server controls. This
             // allows the controls to be automatically reset upon each new query
             // that is conducted on the same connection during each request.
-            // $ldap->setOption(LDAP_OPT_SERVER_CONTROLS, $this->controls);
+            if (count($this->controls) > 0) {
+                $ldap->setOption(LDAP_OPT_SERVER_CONTROLS, $this->controls);
+            }
 
             return $ldap->{$this->type}(
                 $this->getDn(),
